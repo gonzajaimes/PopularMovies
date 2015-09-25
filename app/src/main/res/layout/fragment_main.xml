@@ -10,13 +10,15 @@
 
     <GridView
         android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="90dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="120dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"/>
+        android:gravity="center_horizontal"
+        android:background="#000000"/>
+
 
 </FrameLayout>
