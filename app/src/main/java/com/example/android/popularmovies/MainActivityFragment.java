@@ -127,6 +127,11 @@ public class MainActivityFragment extends Fragment {
             final String MDB_RESULTS = "results";
             final String MDB_ID = "id";
             final String MDB_POSTER_PATH = "poster_path";
+            final String MDB_TITLE = "original_title";
+            final String MDB_RELEASE = "release_date";
+            final String MDB_VOTE_AVG = "vote_average";
+            final String MDB_SYNOPSIS = "overview";
+
             ArrayList<Movie> moviesCollection = new ArrayList<Movie>();
 
             JSONObject moviesJson = new JSONObject(moviesJsonStr);
@@ -136,14 +141,14 @@ public class MainActivityFragment extends Fragment {
 
 
 
-           // String[] resultStrs = new String[moviesArray.length()];
-
-
-
             for(int i = 0; i < moviesArray.length(); i++) {
 
                 String idMovie;
                 String posterPath;
+                String title ;
+                String releaseDate;
+                String voteAverage;
+                String synopsis;
 
 
                 // Get the JSON object representing the movie
@@ -157,15 +162,31 @@ public class MainActivityFragment extends Fragment {
 
                 posterPath = movieInfo.getString(MDB_POSTER_PATH);
 
+                // get the title
+
+                title = movieInfo.getString(MDB_TITLE);
+
+                // get the release date
+
+                releaseDate = movieInfo.getString(MDB_RELEASE);
+
+                // get the vote average
+
+                voteAverage = movieInfo.getString(MDB_VOTE_AVG);
+
+                // get the movie synopsis
+
+                synopsis = movieInfo.getString(MDB_SYNOPSIS);
+
+
 
                 // Add the movie to the Movies Array
-                moviesCollection.add(new Movie(idMovie,posterPath));
+                moviesCollection.add(new Movie(idMovie,posterPath,title,releaseDate,voteAverage,synopsis));
 
 
 
 
-               // resultStrs[i] = idMovie + " - " + posterPath;
-               // Log.v(LOG_TAG, "movies reported " + resultStrs[i]);
+
             }
 
             return moviesCollection;

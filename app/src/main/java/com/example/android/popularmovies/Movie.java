@@ -12,18 +12,44 @@ public class Movie implements Parcelable {
 
     private String movieId;
     private String moviePosterPath;
+    private String title;
+    private String releaseDate;
+    private String voteAverage;
+    private String synopsis;
 
-    public Movie (String id, String posterPath){
+    public Movie (String id, String posterPath, String title, String releaseDate, String voteAverage, String synopsis){
         movieId = id;
         moviePosterPath = posterPath;
+        this.title = title;
+        this.releaseDate = releaseDate;
+        this.voteAverage = voteAverage;
+        this.synopsis = synopsis;
 
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getVoteAverage() {
+        return voteAverage;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
     }
 
     public String getMoviePosterPath (){
 
         return moviePosterPath;
+
     }
+
 
     //This is where you write the values you want to save to the `Parcel`.
     // The `Parcel` class has methods defined to help you save all of your values.
@@ -33,6 +59,11 @@ public class Movie implements Parcelable {
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(movieId);
         out.writeString(moviePosterPath);
+        out.writeString(title);
+        out.writeString(releaseDate);
+        out.writeString(voteAverage);
+        out.writeString(synopsis);
+
 
     }
 
@@ -43,6 +74,10 @@ public class Movie implements Parcelable {
 
         movieId = in.readString();
         moviePosterPath = in.readString();
+        title = in.readString();
+        releaseDate= in.readString();
+        voteAverage = in.readString();
+        synopsis = in.readString();
 
     }
 
