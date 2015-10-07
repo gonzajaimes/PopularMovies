@@ -23,7 +23,7 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
     ArrayList<Movie> movies = new ArrayList<Movie>();
 
-    final String BASE_MOVIE_URL = "http://image.tmdb.org/t/p/w185";
+    final String BASE_MOVIE_URL = "http://image.tmdb.org/t/p/w500";
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
