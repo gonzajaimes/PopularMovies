@@ -57,12 +57,6 @@ public class MainActivityFragment extends Fragment {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_refresh) {
-            //updateWeather();
-            FetchMoviesTask moviesTask = new FetchMoviesTask();
-            moviesTask.execute();
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
