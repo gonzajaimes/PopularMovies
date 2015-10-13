@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.popularmovies.DetailFragment"
     android:id="@+id/scrollView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#000">
+    android:background="#000"
+    tools:context="com.example.android.popularmovies.DetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,66 +29,96 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    style="@style/TitleTextStyle"
-                    android:singleLine="false"
-                    android:text="@string/title" />
-
-                <TextView
-                    style="@style/TitleTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/release_date" />
-
-                <TextView
-                    style="@style/TitleTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rating" />
-
-                <TextView
-                    style="@style/TitleTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/synopsis" />
-
-            </LinearLayout>
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:singleLine="false"
+                android:text="@string/title" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
                 android:background="@android:color/darker_gray" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/titleText"
+                style="@style/DetailTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="16dp">
+                android:layout_weight="1"
+                android:text="@string/release_date" />
 
-                <TextView
-                    android:id="@+id/titleText"
-                    style="@style/DetailTextStyle" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
-                <TextView
-                    android:id="@+id/releaseText"
-                    style="@style/DetailTextStyle" />
+            <TextView
+                android:id="@+id/releaseText"
+                style="@style/DetailTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="2" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/voteText"
-                    style="@style/DetailTextStyle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/synopsisText"
-                    style="@style/DetailTextStyle" />
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rating" />
 
-            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/voteText"
+                style="@style/DetailTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/synopsis" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/synopsisText"
+                style="@style/DetailTextStyle"
+                android:layout_width="0dp"
+                android:layout_weight="2" />
+
         </LinearLayout>
 
     </LinearLayout>

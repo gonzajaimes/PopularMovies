@@ -46,23 +46,36 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
     }
 
-    /**
-     * Provides a view for an AdapterView (ListView, GridView, etc.)
-     *
-     * @param position    The AdapterView position that is requesting a view
-     * @param convertView The recycled view to populate.
-     *                    (search online for "android view recycling" to learn more)
-     * @param parent The parent ViewGroup that is used for inflation.
-     * @return The View for the position in the AdapterView.
-     */
+
+
+    class ViewHolder {
+
+        ImageView movieImageView;
+        ViewHolder(View v)
+        {
+            movieImageView = (ImageView) v.findViewById(R.id.imageview_movies);
+        }
+    }
+
+/**
+ * Provides a view for an AdapterView (ListView, GridView, etc.)
+ *
+ * @param position    The AdapterView position that is requesting a view
+ * @param convertView The recycled view to populate.
+ *                    (search online for "android view recycling" to learn more)
+ * @param parent The parent ViewGroup that is used for inflation.
+ * @return The View for the position in the AdapterView.
+ */
 
 
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+public View getView(int position, View convertView, ViewGroup parent) {
+    View imageView = convertView;
+    ViewHolder holder = null;
+        //ImageView imageView;
         Movie tempMovie = movies.get(position);
         String posterPath = BASE_MOVIE_URL + tempMovie.getMoviePosterPath();
-        if (convertView == null) {
+        if (imageView == null) {
             // if it's not recycled, initialize some attributes
 
 
@@ -70,9 +83,15 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
            // imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
            // imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
            //  imageView.setPadding(8, 8, 8, 8);
-            convertView = LayoutInflater.from(getContext()).
+
+            //convertView = LayoutInflater.from(getContext()).
+            //        inflate(R.layout.image_display, parent, false);
+            //imageView = (ImageView) convertView.findViewById(R.id.imageview_movies);
+
+            imageView = LayoutInflater.from(getContext()).
                     inflate(R.layout.image_display, parent, false);
-            imageView = (ImageView) convertView.findViewById(R.id.imageview_movies);
+            holder = new ViewHolder(imageView);
+            imageView.setTag(holder);
 
 
 
@@ -80,12 +99,13 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
 
         } else {
-            imageView = (ImageView) convertView;
+            //imageView = (ImageView) convertView;
+            holder = (ViewHolder)imageView.getTag();
         }
 
 
         Picasso.with(this.getContext()).
-                load(posterPath).into(imageView);
+                load(posterPath).into(holder.movieImageView);
         return imageView;
     }
 
