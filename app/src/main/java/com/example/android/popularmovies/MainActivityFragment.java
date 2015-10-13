@@ -1,9 +1,11 @@
 package com.example.android.popularmovies;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -95,10 +97,10 @@ public class MainActivityFragment extends Fragment {
     }
     private void updateMovies() {
         FetchMoviesTask moviesTask = new FetchMoviesTask();
-        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        //String location = prefs.getString(getString(R.string.pref_location_key),
-         //       getString(R.string.pref_location_default));
-        moviesTask.execute();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String sortBy = prefs.getString(getString(R.string.pref_sort_key),
+                getString(R.string.pref_sort_default));
+        moviesTask.execute(sortBy);
     }
 
     @Override
@@ -109,7 +111,7 @@ public class MainActivityFragment extends Fragment {
 
 
 
-    public class FetchMoviesTask extends AsyncTask<Void, Void, ArrayList<Movie>> {
+    public class FetchMoviesTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
         private final String LOG_TAG = FetchMoviesTask.class.getSimpleName();
 
@@ -194,12 +196,12 @@ public class MainActivityFragment extends Fragment {
         }
 
         @Override
-        protected ArrayList<Movie> doInBackground(Void... params) {
+        protected ArrayList<Movie> doInBackground(String... params) {
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
-            String sortBy = "popularity.desc";
+            String sortBy = params[0];
             String key = "b2b68d438d36572bfca895dd822e6caa";
 
 
