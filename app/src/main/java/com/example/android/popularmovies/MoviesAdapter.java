@@ -30,7 +30,7 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
      * The context is used to inflate the layout file, and the List is the data we want
      * to populate into the lists
      *
-     * @param c        The current context. Used to inflate the layout file.
+     * @param c      The current context. Used to inflate the layout file.
      * @param movies A List of movies objects to display in a grid
      */
 
@@ -46,47 +46,38 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
     }
 
-
-
+     // create Viewholder Class to avoid using findViewByID so often
     class ViewHolder {
 
         ImageView movieImageView;
-        ViewHolder(View v)
-        {
+
+        ViewHolder(View v) {
             movieImageView = (ImageView) v.findViewById(R.id.imageview_movies);
         }
     }
 
-/**
- * Provides a view for an AdapterView (ListView, GridView, etc.)
- *
- * @param position    The AdapterView position that is requesting a view
- * @param convertView The recycled view to populate.
- *                    (search online for "android view recycling" to learn more)
- * @param parent The parent ViewGroup that is used for inflation.
- * @return The View for the position in the AdapterView.
- */
+    /**
+     * Provides a view for an AdapterView (ListView, GridView, etc.)
+     *
+     * @param position    The AdapterView position that is requesting a view
+     * @param convertView The recycled view to populate.
+     *                    (search online for "android view recycling" to learn more)
+     * @param parent      The parent ViewGroup that is used for inflation.
+     * @return The View for the position in the AdapterView.
+     */
 
 
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View imageView = convertView;
+        ViewHolder holder = null;
 
-public View getView(int position, View convertView, ViewGroup parent) {
-    View imageView = convertView;
-    ViewHolder holder = null;
-        //ImageView imageView;
+
         Movie tempMovie = movies.get(position);
+          //construct the posterPath to retrieve the poster from the internet
         String posterPath = BASE_MOVIE_URL + tempMovie.getMoviePosterPath();
+
         if (imageView == null) {
             // if it's not recycled, initialize some attributes
-
-
-           //imageView = new ImageView(mContext);
-           // imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-           // imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-           //  imageView.setPadding(8, 8, 8, 8);
-
-            //convertView = LayoutInflater.from(getContext()).
-            //        inflate(R.layout.image_display, parent, false);
-            //imageView = (ImageView) convertView.findViewById(R.id.imageview_movies);
 
             imageView = LayoutInflater.from(getContext()).
                     inflate(R.layout.image_display, parent, false);
@@ -94,13 +85,9 @@ public View getView(int position, View convertView, ViewGroup parent) {
             imageView.setTag(holder);
 
 
-
-
-
-
         } else {
-            //imageView = (ImageView) convertView;
-            holder = (ViewHolder)imageView.getTag();
+            // set the viewholder to the imageView
+            holder = (ViewHolder) imageView.getTag();
         }
 
 

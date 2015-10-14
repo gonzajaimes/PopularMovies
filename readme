@@ -1,3 +1,12 @@
-For the app to work.  look for the URL sent to de movieDB and replace the key value for your API key.
+For the app to work.  go to the MainActivityFragment.java and insert your key value in the "key" variable
 
-http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=[your key]
+protected ArrayList<Movie> doInBackground(String... params) {
+            // These two need to be declared outside the try/catch
+            // so that they can be closed in the finally block.
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
+            String sortBy = params[0];
+
+            //insert "your key"
+            String key = "your key";
+...

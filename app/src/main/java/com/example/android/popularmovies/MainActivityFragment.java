@@ -196,7 +196,9 @@ public class MainActivityFragment extends Fragment {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
             String sortBy = params[0];
-            String key = "b2b68d438d36572bfca895dd822e6caa";
+
+            //insert "your key"
+            String key = "your key";
 
 
             // Will contain the raw JSON response as a string.
